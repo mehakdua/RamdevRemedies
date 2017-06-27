@@ -1,99 +1,57 @@
-<ion-view title="Home">
-<ion-nav-buttons side="right">
-      <div class="bar bar-header item-input-inset">
-          <label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="Search">
-          </label>
-          <button class="button button-clear">
-            Cancel
-          </button>
-      </div>
-       <button class="button button-icon icon" ng-click="openPopover($event)">:</button>
-</ion-nav-buttons>
-<ion-content class="userParentCls">
+<ion-view cache-view="false" title="Remedies">
+
+<!--<ion-header>
+    <ion-nav-bar class="bar bar-header bar-positive">
+    </ion-nav-bar>
+</ion-header>-->
+<ion-content class="userParentCls has-header">
 <user-logo></user-logo>
-<!--<div class="list list-inset">
-    <div class="item item-divider">Events</div>
-    <div class="item" ng-repeat="event in user.events|limitTo:3">
-     {{event.date}}<br>{{event.place}}
-    </div>    
-    <div class="item">
-     <a ui-sref="user-detail({ category: 'event' })">View More</a>
-    </div> 
-</div>-->
 <div class="list list-inset">
-    <div class="item item-divider">Quotes</div>
-    <div class="item" ng-repeat="quote in user.quotes|limitTo:3">
-     {{quote.text}}
+    <div class="item item-divider">Home Remedies</div>
+    <div class="item pointerCls" ng-repeat="remedy in user.remedies|limitTo:3" ui-sref="remedy-detail({selectedRemedy:remedy.id})">
+    <ion-thumbnail item-left>
+      <img src={{remedy.src}} height="25" width="30">
+    </ion-thumbnail>
+     {{remedy.title}}
     </div>    
-     <a ui-sref="user-detail({ category: 'quote' })">View More</a>
-    
-</div>
-<!--<div class="list list-inset">
-    <div class="item item-divider">Tweets</div>
-    <div class="item" ng-repeat="quote in user.quotes|limitTo:3">
-     <div>{{quote.text}}<br>{{quote.link}}</div>
-    <div class="item">
-     <div class="row">
-        <div class="col col-50"></div>
-        <div class="col col-25">
-                <button class="button button-balanced">
-                        Follow
-                </button>
-        </div>
-        <div class="col col-25">
-                <button class="button button-balanced">
-                        Retweet
-                </button>
-        </div>
-
-     </div>
-    </div>  
-    </div>  
-    <div class="item">
-     <a href="#">View More</a>
-    </div> 
+    <a class="item item-icon-right text-decoration" ui-sref="remedy-list"> <i class="icon ion-chevron-right "></i>
+    View More
+    </a>    
 </div>
 <div class="list list-inset">
-    <div class="item item-divider">Facebook</div>
-    <div class="item" ng-repeat="quote in user.quotes|limitTo:3">
-     <div>{{quote.text}}<br>{{quote.link}}</div>
-     <div class="row">
-        <div class="col col-50"></div>
-        <div class="col col-25">
-                <button class="button button-balanced">
-                        Like
-                </button>
-        </div>
-        <div class="col col-25">
-                <button class="button button-balanced">
-                        Share
-                </button>
-        </div>
-
-     </div>
+    <div class="item item-divider">Disease and their cures</div>
+    <div class="item pointerCls" ng-repeat="disease in user.diseases|limitTo:3"  ui-sref="disease-detail({selectedDisease:disease.id})">
+    <ion-thumbnail item-left>
+      <img src={{disease.src}} height="25" width="30">
+    </ion-thumbnail>
+     {{disease.title}}
     </div>    
-    <div class="item">
-     <a href="#">View More</a>
-    </div> 
-</div>-->
+    <a class="item item-icon-right text-decoration" ui-sref="disease-list"> <i class="icon ion-chevron-right "></i>
+    View More
+    </a>    
+</div>
 <div class="list list-inset">
     <div class="item item-divider">Yoga and Health Tips</div>
     <div class="item" ng-repeat="video in user.videos |limitTo:3">
      <div class="row responsive-sm">
-        <div class="col col-50"> 
+        <div class="col col-50 center"> 
         <iframe ng-src={{video.url}} frameborder="0" allowfullscreen></iframe>
-      <!--   <iframe ng-src="{{trustSrc(video.url)}}" frameborder="0"   > </iframe>-->
-           <!-- <video controls="controls" preload="metadata" autocontrols webkit-playsinline="webkit-playsinline" class="videoPlayer"><source ng-src="{{trustSrc(video.url)}}" type="video/mp4"/>
-            </video>-->
         </div>    
-         <div class="col col-50"><p class="wrapText">{{video.title}}</p></div>  
+         <div class="col col-50 center"><p class="wrapText">{{video.title}}</p></div>  
      </div>
     </div>
-    <div class="item">
-    <a ui-sref="user-detail({category:'video'})">View More</a>
-    </div> 
+     <a class="item item-icon-right text-decoration" ui-sref="user-detail({category:'video'})"> <i class="icon ion-chevron-right "></i>
+    View More
+    </a>    
+</div>
+<div class="list list-inset">
+    <div class="item item-divider">Quotes</div>
+    <div class="item wrapText" ng-repeat="quote in user.quotes|limitTo:3" >
+     {{quote.text}}
+    </div>    
+       <a class="item item-icon-right text-decoration" ui-sref="user-detail({category:'quote'})"> <i class="icon ion-chevron-right "></i>
+    View More
+    </a> 
 </div>
 </ion-content>
 </ion-view>

@@ -1,0 +1,29 @@
+<ion-view>
+<ion-header>
+    <ion-nav-bar class="bar bar-header bar-positive">
+        <ion-nav-back-button>
+            </ion-nav-back-button>
+        <ion-title>Remedies</ion-title>
+      </ion-nav-bar>
+</ion-header>
+<ion-content>
+<div class="item item-input">
+<i class="icon ion-search placeholder-icon"></i>
+  <input type="text" ng-model="obj.searchTxt.title">
+  <div ng-click="clearText()"> <i class="icon ion-close"></i></div>
+</div>
+<div class="list list-inset">
+  <div class="item item-divider" ng-click="clearText()">
+  Disease and their cures
+  </div>
+  <a class="item item-icon-right"  ng-repeat="disease in diseases |orderBy:'title'| filter:obj.searchTxt"  ui-sref="disease-detail({selectedDisease:disease.id})">
+   <ion-thumbnail item-left>
+      <img src={{disease.src}} height="25" width="30">
+    </ion-thumbnail>
+   <i class="icon ion-chevron-right "></i>
+   {{disease.title}}
+  </a>
+ 
+</div>
+</ion-content>
+</ion-view>

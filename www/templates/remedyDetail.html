@@ -1,0 +1,20 @@
+<ion-view>
+<ion-header>
+    <ion-nav-bar class="bar bar-header bar-positive">
+        <ion-nav-back-button>
+            </ion-nav-back-button>
+        <ion-title>Remedies</ion-title>
+      </ion-nav-bar>
+</ion-header>
+<ion-content>
+<div class="center">
+	<img src={{remedy.src}} class="cover-img" />
+</div>
+<div class="list list-inset">
+    <div class="item item-divider">{{remedy.title}}</div>
+    <div class ="item">
+      <p ng-bind-html="remedy.detail"></p>
+    </div>    
+</div>
+</ion-content>
+</ion-view>

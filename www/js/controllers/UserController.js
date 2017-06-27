@@ -1,20 +1,40 @@
  //angular.module('starter')
  
 app
-.controller("UserController", function($scope, $stateParams,$ionicPopover,UserService, $sce) {
+.controller("UserController", function($scope, $stateParams,$ionicPopover,UserService, $sce, $rootScope,$localStorage) {
   $ionicPopover.fromTemplateUrl('../templates/popover.html', {
     scope: $scope
   }).then(function(popover) {
     $scope.popover = popover;
   });
   function init(){
-    UserService.getUrl().then(function(response){
-     $scope.user = response.data;
      $scope.src ="img/img1.jpg";
-     console.log(  $scope.user);
-      console.log( UserService.getData(0));
-    });
-   //$scope.user = UserService.getData(0);
+      $rootScope.showLoader = true;
+  /* if( navigator.connection.type == 'none'){
+          $scope.user = $localStorage.data;
+           UserService.setData($localStorage.data);
+          $rootScope.showLoader = false;
+          console.log("in");
+     }else{*/
+       UserService.getFlagApi().then(function(response){
+          var flag = response.data.flag;
+          if(flag == UserService.getFlag()){
+             console.log("flag match");
+               $scope.user = $localStorage.data;
+               UserService.setData( $localStorage.data);
+               $rootScope.showLoader = false;
+          }else{
+             console.log("api");
+                 UserService.getUrl().then(function(response){
+                 $scope.user = response.data;
+                 $rootScope.showLoader = false;
+                 UserService.setData( response.data);
+                 UserService.setFlag(flag);
+                });
+          }
+      });
+ //  }
+     
   }
    $scope.trustSrc = function(src) {
     var url = src.replace("watch?v=", "v/");
@@ -26,6 +46,8 @@ app
   $scope.closePopover = function() {
     $scope.popover.hide();
   };
+  var x ="html\ngg";
+ console.log(x);
   //Cleanup the popover when we're done with it!
   $scope.$on('$destroy', function() {
     $scope.popover.remove();

@@ -1,0 +1,50 @@
+<ion-view>
+<ion-header>
+    <ion-nav-bar class="bar bar-header bar-positive">
+        <ion-nav-back-button>
+            </ion-nav-back-button>
+        <ion-title>Remedies</ion-title>
+      </ion-nav-bar>
+</ion-header>
+<ion-content>
+<div class ="item diseaseTitleCls">
+ <h2 class="title">{{disease.title}}</h2>
+</div>
+<div class="center">
+  <img src={{disease.src}} class="cover-img" />
+</div>
+<!--<div class="list list-inset">
+    <div class="item item-divider" >Disease and their cures</div>
+    <div class ="item">
+      <p>{{disease.title}}</p>
+    </div>    
+</div>-->
+<div class="list list-inset" ng-if="disease.causes.length >0">
+    <div class="item item-divider" >Causes</div>
+    <div  class ="item">
+      <p ng-bind-html="disease.causes"></p>
+    </div>    
+</div>
+<div class="list list-inset" ng-if="disease.solutions.length >0">
+    <div class="item item-divider" >Cure</div>
+    <div class ="item" ng-repeat="solution in disease.solutions">
+      <p ng-bind-html="solution.detail"></p>
+    </div>    
+</div>
+<div class="list list-inset" ng-if="disease.yoga.length >0">
+    <div class="item item-divider" >Related Yoga/Exercise</div>
+    <div class ="item">
+      <p ng-bind-html="disease.yoga"></p>
+    </div>    
+</div>
+<div class="list list-inset" >
+   <div class="item item-divider">Share</div>
+    <div class="item wrapText">
+        <button class="button button-block button-royal item-icon-left" ng-click="OtherShare()">
+             <i class="icon ion-android-share-alt"></i>
+              Share via watsapp
+      </button>
+    </div> 
+</div>
+</ion-content>
+</ion-view>

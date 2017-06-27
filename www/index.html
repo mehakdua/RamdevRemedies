@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta  charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
@@ -25,46 +25,48 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
+    <script src="lib/ngstorage/ngStorage.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
     <script src="lib/ionic/js/backand.min.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
   <body ng-app="starter">
-  <ion-side-menus enable-menu-with-back-views="true">
-            <ion-side-menu side="left">
-              <ion-header-bar class="bar-stable">
+  <div class="loading" ng-show="showLoader">Loading&#8230;</div>
+ 
+     <ion-side-menus enable-menu-with-back-views="false">
+     <ion-side-menu side="left">
+              <ion-header-bar  class="bar bar-header bar-positive">
               <h1 class="title">Menu</h1>
               </ion-header-bar>
               <ion-content>
               <ion-list>
-              <ion-item menu-close ng-click="exit()">
-              Login
+              <ion-item menu-close  ui-sref="users">
+              Home Remedies
               </ion-item>
-              <ion-item menu-close href="#/app/search">
-              Search
+              <ion-item menu-close  ui-sref="shareIt">
+              Share via watsapp
               </ion-item>
-              <ion-item menu-close href="#/app/browse">
-              Browse
-              </ion-item>
-              <ion-item menu-close href="#/app/playlists">
-              Playlists
-              </ion-item>
-            </ion-side-menu>
-            <ion-side-menu-content>
-                <ion-nav-bar class="bar-positive" align-title="left">
-                     <ion-nav-buttons side="left">
-                       <!-- Toggle left side menu -->
-                       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-                      </ion-nav-buttons>
-                </ion-nav-bar>
-                <ion-nav-view></ion-nav-view>
-            </ion-side-menu-content>
+            </ion-side-menu>s
+      <ion-side-menu-content>
+    <ion-nav-bar  class="bar bar-header bar-positive">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" 
+                menu-toggle="left">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view ></ion-nav-view>
+</ion-side-menu-content>
     </ion-side-menus>
     <script src="js/controllers/UserController.js"></script>
     <script src="js/controllers/UserDetailController.js"></script>
+    <script src="js/controllers/RemedyController.js"></script>
+     <script src="js/controllers/DiseaseController.js"></script>
     <script src="js/directives/UserDirective.js"></script>
     <script src="js/services/UserService.js"></script>
     <script src="js/userData.js"></script>
