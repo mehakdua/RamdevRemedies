@@ -7,6 +7,11 @@
       </ion-nav-bar>
 </ion-header>
 <ion-content>
+<div class="item item-input" ng-if="category =='video'">
+<i class="icon ion-search placeholder-icon"></i>
+  <input type="text" ng-model="obj.searchTxt.title">
+<div ng-click="clearText()"> <i class="icon ion-close"></i></div>
+</div>
 <div class="list list-inset" ng-if="category =='quote'">
   <div class="item item-divider">Quotes</div>
     <div class="item wrapText" ng-repeat="quote in user.quotes">
@@ -15,7 +20,7 @@
 </div>
 <div class="list list-inset" ng-if="category =='video'">
    <div class="item item-divider">Yoga and Health Tips</div>
-    <div class="item" ng-repeat="video in user.videos">
+    <div class="item" ng-repeat="video in user.videos | filter:obj.searchTxt">
      <div class="row responsive-sm">
         <div class="col col-50 center">
        <iframe ng-src={{video.url}} frameborder="0" allowfullscreen></iframe>

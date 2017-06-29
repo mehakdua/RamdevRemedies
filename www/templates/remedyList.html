@@ -7,12 +7,17 @@
       </ion-nav-bar>
 </ion-header>
 <ion-content>
+<div class="item item-input">
+<i class="icon ion-search placeholder-icon"></i>
+  <input type="text" ng-model="obj.searchTxt.title">
+  <div ng-click="clearText()"> <i class="icon ion-close"></i></div>
+</div>
 <div class="list list-inset">
 
   <div class="item item-divider">
   Home Remedies
   </div>
-  <a class="item item-icon-right"  ng-repeat="remedy in remedies"  ui-sref="remedy-detail({selectedRemedy:remedy.id})">
+  <a class="item item-icon-right"  ng-repeat="remedy in remedies| orderBy:'title'| filter:obj.searchTxt"  ui-sref="remedy-detail({selectedRemedy:remedy.id})">
     <ion-thumbnail item-left>
       <img src={{remedy.src}} height="25" width="30">
     </ion-thumbnail>

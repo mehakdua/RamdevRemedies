@@ -2,8 +2,13 @@
  
 app.controller("RemdeyListController", function($scope, $stateParams,UserService) {
   function init(){
+     $scope.obj ={searchTxt:''};
     console.log(UserService.getData());
   	$scope.remedies =  UserService.getData().remedies;
+  }
+  $scope.clearText = function(){
+    console.log("clearText");
+     $scope.obj.searchTxt ="";
   }
   init();
 });

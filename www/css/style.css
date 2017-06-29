@@ -37,6 +37,13 @@ p{
 }
 .diseaseTitleCls  .title{
     height: 20px !important;
+    font-weight: bold;
+}
+.remedyTitle{
+  font-weight: bold;
+}
+.watsapp-cls{
+  margin-left: 10px;
 }
 /* Absolute Center Spinner */
 .loading {

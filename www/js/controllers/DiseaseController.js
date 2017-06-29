@@ -1,6 +1,6 @@
  //angular.module('starter')
  
-app.controller("DiseaseListController", function($scope, $stateParams,UserService) {
+app.controller("DiseaseListController", function($scope, $state, $stateParams,UserService) {
   function init(){
     $scope.obj ={searchTxt:''};
   	$scope.diseases =  UserService.getData().diseases;
@@ -11,6 +11,9 @@ app.controller("DiseaseListController", function($scope, $stateParams,UserServic
     console.log("clearText");
      $scope.obj.searchTxt ="";
   }
+  $scope.goBack = function() {
+    $state.go('users');
+}
   init();
 });
 app.controller("DiseaseDetailController", function($scope, $stateParams,UserService) {
@@ -36,7 +39,6 @@ app.controller("DiseaseDetailController", function($scope, $stateParams,UserServ
        data = data +"Yoga:\n\n"
          data = data + $scope.disease.yoga+"\n\n";
     }
-    console.log(data);
     function htmlToPlaintext(text) {
        return text ? String(text).replace(/<[^>]+>/gm, '') : '';
     }

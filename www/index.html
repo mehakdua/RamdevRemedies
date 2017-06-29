@@ -36,7 +36,7 @@
   <body ng-app="starter">
   <div class="loading" ng-show="showLoader">Loading&#8230;</div>
  
-     <ion-side-menus enable-menu-with-back-views="false">
+     <ion-side-menus enable-menu-with-back-views="true">
      <ion-side-menu side="left">
               <ion-header-bar  class="bar bar-header bar-positive">
               <h1 class="title">Menu</h1>
@@ -49,7 +49,10 @@
               <ion-item menu-close  ui-sref="shareIt">
               Share via watsapp
               </ion-item>
-            </ion-side-menu>s
+               <ion-item menu-close ui-sref="disease-list">
+              Navigate to disease list
+              </ion-item>
+            </ion-side-menu>
       <ion-side-menu-content>
     <ion-nav-bar  class="bar bar-header bar-positive">
         <ion-nav-back-button>
@@ -63,6 +66,7 @@
     <ion-nav-view ></ion-nav-view>
 </ion-side-menu-content>
     </ion-side-menus>
+    
     <script src="js/controllers/UserController.js"></script>
     <script src="js/controllers/UserDetailController.js"></script>
     <script src="js/controllers/RemedyController.js"></script>
