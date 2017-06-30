@@ -36,6 +36,22 @@ app
  //  }
      
   }
+   $scope.pauseVideo = function() {
+    /*var iframes = document.getElementsByTagName("iframe");
+        if (iframes != null) {
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].src = iframes[i].src; //causes a reload so it stops playing, music, video, etc.
+            }
+        }
+*/
+        document.getElementById('0').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');    
+    
+    }
+
+    $scope.$on('$ionicView.beforeLeave', function(){
+        $scope.pauseVideo();
+    });
+
    $scope.trustSrc = function(src) {
     var url = src.replace("watch?v=", "v/");
     return $sce.trustAsResourceUrl(url);
@@ -60,5 +76,9 @@ app
   $scope.$on('popover.removed', function() {
     // Execute action
   });
+  $scope.$on('$destroy', function() {
+
+    // anything here will be executed when this scope is destroyed.
+});
   init();
 });

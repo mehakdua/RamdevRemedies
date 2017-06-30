@@ -1,4 +1,4 @@
-<ion-view cache-view="false" title="Remedies" hide-back-button="true">
+<ion-view  title="Remedies" hide-back-button="true">
 
 <!--<ion-header>
     <ion-nav-bar class="bar bar-header bar-positive">
@@ -18,6 +18,9 @@
     View More
     </a>    
 </div>
+<div>
+  <!--<iframe id="popup-youtube-player" width="640" height="360" src="http://www.youtube.com/embed/geTgZcHrXTc?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen="true" allowscriptaccess="always"></iframe>-->
+</div>
 <div class="list list-inset">
     <div class="item item-divider">Disease and their cures</div>
     <div class="item pointerCls" ng-repeat="disease in user.diseases|limitTo:3"  ui-sref="disease-detail({selectedDisease:disease.id})">
@@ -35,7 +38,7 @@
     <div class="item" ng-repeat="video in user.videos |limitTo:3">
      <div class="row responsive-sm">
         <div class="col col-50 center"> 
-        <iframe ng-src={{video.url}} frameborder="0" allowfullscreen></iframe>
+        <iframe ng-src={{video.url}} frameborder="0" allowfullscreen id="{{$index}}"></iframe>
         </div>    
          <div class="col col-50 center"><p class="wrapText">{{video.title}}</p></div>  
      </div>
@@ -44,6 +47,7 @@
     View More
     </a>    
 </div>
+
 <div class="list list-inset">
     <div class="item item-divider">Quotes</div>
     <div class="item wrapText" ng-repeat="quote in user.quotes|limitTo:3" >
